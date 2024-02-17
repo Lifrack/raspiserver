@@ -1,9 +1,24 @@
-version: "3"
+version: '2.4'
+
 services:
-  asterisk:
-    image: andrius/asterisk
-    environment:
-      - ASTERISK_UID=${UID}
-      - ASTERISK_GID=${GID}
+
+  voip:
+    image: ghcr.io/izer-xyz/3cx:latest
+    restart: unless-stopped
+    tty: true
+    tmpfs:
+      - /tmp/
+      - /run/
+      - /run/lock
     volumes:
-      - ${PWD}/logs:/var/log/asterisk
+      - voip:/mnt/voip
+      - /sys/fs/cgroup:/sys/fs/cgroup:ro
+    ports:
+      - "5015:5015"
+      - "5060:5060"
+      - "5060:5060/udp"
+      - "5090:5090"
+      - "5090:5090/udp"
+
+volumes:
+  voip:
