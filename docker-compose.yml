@@ -1,0 +1,9 @@
+version: "3"
+services:
+  asterisk:
+    image: andrius/asterisk
+    environment:
+      - ASTERISK_UID=${UID}
+      - ASTERISK_GID=${GID}
+    volumes:
+      - ${PWD}/logs:/var/log/asterisk
