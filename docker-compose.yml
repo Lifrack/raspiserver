@@ -3,7 +3,7 @@ version: '3.9'
 services:
 
   voip:
-    image: ghcr.io/izer-xyz/3cx:16.0.8.16-33
+    image: ghcr.io/izer-xyz/3cx:latest
     restart: unless-stopped
     tty: true
     tmpfs:
@@ -19,6 +19,8 @@ services:
       - "5060:5060/udp"
       - "5090:5090"
       - "5090:5090/udp"
+    # Añade esta línea para usar el espacio de nombres de cgroup del host
+    default-cgroupns-mode: host
 
 volumes:
   voip:
