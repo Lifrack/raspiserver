@@ -19,8 +19,6 @@ services:
       - "5060:5060/udp"
       - "5090:5090"
       - "5090:5090/udp"
-    # Añade esta línea para usar el espacio de nombres de cgroup del host
-    cgroupns_mode: host
 
 volumes:
   voip:
