@@ -3,7 +3,7 @@ version: '3.9'
 services:
 
   voip:
-    image: ghcr.io/izer-xyz/3cx:latest
+    image: ghcr.io/izer-xyz/3cx:16.0.8.16-33
     restart: unless-stopped
     tty: true
     tmpfs:
