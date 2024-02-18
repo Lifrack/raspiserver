@@ -1,24 +1,21 @@
-version: '3.9'
-
+version: "3.7"
 services:
-
-  voip:
-    image: ghcr.io/izer-xyz/3cx:latest
-    restart: unless-stopped
-    tty: true
-    tmpfs:
-      - /tmp/
-      - /run/
-      - /run/lock
-    volumes:
-      - voip:/mnt/voip
-      - /sys/fs/cgroup:/sys/fs/cgroup:rw
+  freepbx:
+    build:
+    image: crazyquark/freepbx:latest
     ports:
-      - "5015:5015"
-      - "5060:5060"
-      - "5060:5060/udp"
-      - "5090:5090"
-      - "5090:5090/udp"
-
-volumes:
-  voip:
+      - 80:80
+      - 5060:5060
+      - 5060:5060/udp
+      - 5160:5160
+      - 5160:5160/udp
+      - 10000-10100:10000-10100/udp
+    volumes:
+      - /etc/localtime:/etc/localtime:ro 
+      - /etc/timezone:/etc/timezone:ro 
+#      - freepbx-backup:/backup
+#      - freepbx-recordings:/var/spool/asterisk/monitor
+    environment: 
+      - TZ=America/Mexico_City
+    network_mode: "bridge"
+    restart: unless-stopped
