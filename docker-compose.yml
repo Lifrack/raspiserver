@@ -1,7 +1,6 @@
 version: "3.7"
 services:
   freepbx:
-    build:
     image: crazyquark/freepbx:latest
     ports:
       - 80:80
