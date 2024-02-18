@@ -1,4 +1,4 @@
-version: '2.4'
+version: '3.9'
 
 services:
 
@@ -13,12 +13,16 @@ services:
     volumes:
       - voip:/mnt/voip
       - /sys/fs/cgroup:/sys/fs/cgroup:ro
+      # Añade esta línea para montar el volumen de subjerarquía de cgroupv2
+      - /sys/fs/cgroup/system.slice/docker-$CONTAINER_ID.scope:/sys/fs/cgroup/init.scope:ro
     ports:
       - "5015:5015"
       - "5060:5060"
       - "5060:5060/udp"
       - "5090:5090"
       - "5090:5090/udp"
+    # Añade esta línea para usar el espacio de nombres de cgroup del host
+    cgroupns_mode: host
 
 volumes:
   voip:
