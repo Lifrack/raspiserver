@@ -20,5 +20,5 @@ services:
 #      - freepbx-recordings:/var/spool/asterisk/monitor
     environment: 
       - TZ=America/Mexico_City
-    network_mode: "bridge"
+    network_mode: "host"
     restart: unless-stopped
