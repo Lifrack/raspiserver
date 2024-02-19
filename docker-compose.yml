@@ -12,7 +12,7 @@ services:
       - 5160:5160
       - 5161:5161
       - 5160:5160/udp
-      - 18000-18030/udp:18000-18030/udp
+      - 18000-18030:18000-18030/udp
     volumes:
       - /etc/localtime:/etc/localtime:ro 
       - /etc/timezone:/etc/timezone:ro 
